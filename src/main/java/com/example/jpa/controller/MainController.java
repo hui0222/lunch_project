@@ -32,10 +32,26 @@ public class MainController {
     ) {
 
         Product productOne = productRepository.findByProductId(productId);
-
         return productOne;
     }
 
+    @RequestMapping(path = "/product/insert",method = RequestMethod.GET)
+    public String productInsert(
+            Product product
+    ) {
+        //insert or update
+        //해당 키값이 있으면 업데이트됨.
+        productRepository.save(product);
+        return "insert sucess";
+    }
 
+    @RequestMapping(path = "/product/delete/{productId}",method = RequestMethod.GET)
+    public String productDelete(
+            @PathVariable int productId
+    ) {
+        //delete
+        productRepository.deleteById(productId);
+        return "delete sucess";
+    }
 
 }
