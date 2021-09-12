@@ -20,47 +20,13 @@ class LunchServiceTest {
     */
     @Test
     public void test() {
-        int n = 6;
+        // todo 1. 인원을 받음
+        // todo 2. 인원 수로 그룹4, 그룹3 갯수를 가져옴 (O)
+        // todo 3. 인원을 그룹4, 그룹3에 차례대로 분배해줌
+        // todo 4. 모든 그룹정보에 그룹4, 그룹3을 담아서 리턴
 
-        for (int i=n; i<20; i++) {
-            System.out.println("[start] n:"+i);
-            getGroupInfo(i);
-        }
-    }
+        // todo 5. 팀별로 중복이 없도록 처리하는 로직 추가
 
-    public void getGroupInfo(int n) {
-        int quotient_4 = n/4;
-        int remainder_4 = n%4;
-
-        int group_4 = 0;
-        int group_3 = 0;
-
-        // 1. 4로 나눴을 때 나머지 0
-        if(remainder_4 == 0){
-            group_4 = quotient_4;  // 몫이 총 그룹수
-            group_3 = 0;
-        }
-
-        // 2. 4로 나눴을 때 나머지 3
-        if(remainder_4 == 3){
-            group_4 = quotient_4;
-            group_3 = 1;
-        }
-
-        // 3. 4로 나눴을 때 나머지 2
-        if(remainder_4 == 2){
-            group_4 = quotient_4-1;
-            group_3 = 2;
-        }
-
-        // 4. 4로 나눴을 때 나머지 1
-        if(remainder_4 == 1){
-            group_4 = quotient_4-2;
-            group_3 = 3;
-        }
-
-        System.out.println("group_3 : " + group_3);
-        System.out.println("group_4 : " + group_4);
     }
 
 }
