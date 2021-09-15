@@ -1,28 +1,34 @@
 package com.example.jpa.controller;
 
 import com.example.jpa.domain.Member;
+import com.example.jpa.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class MemberController {
 
+    @Autowired
+    MemberService memberService = new MemberService();
 
-    @PutMapping("/member")
-    public String putMember() {
-        String result="";
+    @PostMapping("/member")
+    public Member insertMember(Member member) {
+        return memberService.memberSave(member);
+    }
 
+    @DeleteMapping("/member/{memberId}")
+    public String DeleteMember(@PathParam("memberId") Long memberId) {
+        String result="delete";
+        memberService.memberDelete(memberId);
         return result;
     }
 
     @GetMapping("/member")
     public List<Member> getMemberList() {
-        List<Member> members = new ArrayList<>();
-        return members;
+        return memberService.findAll();
     }
 }

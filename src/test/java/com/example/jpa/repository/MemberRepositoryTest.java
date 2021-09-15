@@ -9,6 +9,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
 // junit5에서는 @RunWith 대신에 @ExtendWith(SpringExtend.class)을 사용한다.
 @ExtendWith(SpringExtension.class)
 // JPA 관련된 Component만 로드 된다.
@@ -28,7 +30,20 @@ class MemberRepositoryTest {
         Member member = new Member();
         member.setMemberName("Hwi");
         member.setTeam("DEV");
-
         memberRepository.save(member);
+    }
+
+    @Test
+    void delete(){
+        Member member = new Member();
+        member.setMemberId(1L);
+        memberRepository.delete(member);
+    }
+
+    @Test
+    void list(){
+
+        List<Member> memberList = memberRepository.findAll();
+        System.out.println(memberList);
     }
 }

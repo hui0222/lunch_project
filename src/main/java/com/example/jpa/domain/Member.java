@@ -1,5 +1,6 @@
 package com.example.jpa.domain;
 
+import com.sun.istack.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,11 @@ public class Member {
     @Column(name = "member_id")
     private Long memberId;
 
+    @NotNull
     @Column(name = "member_name")
     private String memberName;
 
+    @NotNull
     @Column(name = "team")
     private String team;
 
